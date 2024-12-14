@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventuras de Finn y Jake</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" type="image/gif" href="pibby.gif">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:lightskyblue;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            background-color: #878783;
+            padding: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            background-color: #333;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para la galería */
+        #gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra el contenido del carrusel */
+        }
+
+        .carousel {
+            display: flex;
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+            margin: 20px 0; /* Espacio alrededor del carrusel */
+        }
+
+        .carousel-images {
+            display: flex;
+            overflow: hidden; /* Oculta las imágenes que no están en vista */
+            width: 100%; /* Ancho completo del contenedor */
+            max-width: 800px; /* Ancho máximo del carrusel */
+        }
+
+        .carousel-images div {
+            min-width: 100%; /* Cada imagen ocupa el 100% del contenedor */
+            transition: transform 0.5s ease; /* Transición suave al cambiar de imagen */
+        }
+
+        #gallery img {
+            width: 100%; /* Ancho completo del contenedor */
+            height: 450px; /* Altura fija */
+            object-fit: cover; /* Mantiene la relación de aspecto */
+            border-radius: 10px; /* Bordes redondeados */
+            transition: transform 0.3s, opacity 0.3s; /* Transición suave */
+        }
+
+        #gallery img:hover {
+            transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+            opacity: 0.9; /* Cambia la opacidad al pasar el mouse */
+        }
+
+        /* Estilo para la tabla de villanos */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Colapsa los bordes */
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #333; /* Bordes de la tabla */
+            padding: 10px; /* Espaciado interno */
+            text-align: left; /* Alineación del texto */
+        }
+
+        th {
+            background-color: #ffcc00; /* Color de fondo para el encabezado */
+            color: #333; /* Color del texto del encabezado */
+        }
+
+        tr:hover {
+            background-color: #f0e68c; /* Color de fondo al pasar el mouse */
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+        #m10{
+            text-decoration-color: white;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <h1 class="m10"  text-decoration-color: white;>Aventuras de Finn y Jake</h1>
+        <p class="m10"  text-decoration-color: white; >¡Explora la Tierra de Ooo con nuestros aventureros favoritos!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">Acerca de</a></li>
+            <li><a href="#adventures">Aventuras</a></li>
+            <li><a href="#gallery">Galería</a></li>
+            <li><a href="#villains">Villanos</a></li>
+            <li><a href="#allies">Aliados</a></li>
+            <li><a href="#funfacts">Datos Curiosos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>Acerca de Finn y Jake</h2>
+            <p>Finn el Humano y Jake el Perro son el dúo dinámico que protege la Tierra de Ooo. ¡Sus épicas aventuras están llenas de emoción, risas y amistad!</p>
+            <p>Finn, un chico entusiasta y valiente, siempre está listo para salvar el día, empuñando su espada dorada y con una determinación inquebrantable. Jake, su compañero perro mágico, puede estirarse en cualquier forma y tamaño, proporcionando alivio cómico y asistencia invaluable durante sus escapadas.</p>
+            <p>Juntos, viajan a través de la post-apocalíptica Tierra de Ooo, encontrando personajes peculiares, descubriendo secretos antiguos y enfrentándose a enemigos formidables. Ya sea luchando contra el siniestro Lich o navegando por el Nightosphere, Finn y Jake demuestran que la amistad y el coraje pueden conquistar cualquier desafío.</p>
+        </section>
+
+        <section id="adventures">
+            <h2>Principales Aventuras</h2>
+            <ul>
+                <li>Salvar a la Princesa Chicle del Rey Helado</li>
+                <li>Explorar el Nightosphere</li>
+                <li>Batallar contra el Lich</li>
+                <li>Descubrir los secretos del Enchiridion</li>
+            </ul>
+        </section>
+
+        <section id="gallery">
+            <h2>Galería</h2>
+            <div class="carousel">
+                <button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <div class="carousel-images">
+                    <div>
+                        <img src="1.jpeg" alt="Imagen 1">
+                    </div>
+                    <div>
+                        <img src="2.jpeg" alt="Imagen 2">
+                    </div>
+                    <div>
+                        <img src="3.jpeg" alt="Imagen 3">
+                    </div>
+                    <div>
+                        <img src="4.jpeg" alt="Imagen 4">
+                    </div>
+                    <div>
+                        <img src="5.jpeg" alt="Imagen 5">
+                    </div>
+                    <div>
+                        <img src="6.jpeg" alt="Imagen 6">
+                    </div>
+                    <div>
+                        <img src="7.jpeg" alt="Imagen 7">
+                    </div>
+                    <div>
+                        <img src="8.jpeg" alt="Imagen 8">
+                    </div>
+                    <div>
+                        <img src="9.jpeg" alt="Imagen 9">
+                    </div>
+                    <div>
+                        <img src="10.jpeg" alt="Imagen 10">
+                    </div>
+                    <div>
+                        <img src="11.jpeg" alt="Imagen 11">
+                    </div>
+                    <div>
+                        <img src="12.jpeg" alt="Imagen 12">
+                    </div>
+                    <div>
+                        <img src="13.jpeg" alt="Imagen 13">
+                    </div>
+                    <div>
+                        <img src="14.jpeg" alt="Imagen 14">
+                    </div>
+                    <div>
+                        <img src="15.jpg" alt="Imagen 15">
+                    </div>
+                    <div>
+                        <img src="16.jpg" alt="Imagen 16">
+                    </div>
+                    <div>
+                        <img src="17.jpg" alt="Imagen 17">
+                    </div>
+                    <div>
+                        <img src="18.jpg" alt="Imagen 18">
+                    </div>
+                    <div>
+                        <img src="19.jpg" alt="Imagen 19">
+                    </div>
+                    <div>
+                        <img src="20.jpg" alt="Imagen 20">
+                    </div>
+                    <div>
+                        <img src="21.jpg" alt="Imagen 21">
+                    </div>
+                    <div>
+                        <img src="22.jpg" alt="Imagen 22">
+                    </div>
+                    <div>
+                        <img src="23.jpg" alt="Imagen 23">
+                    </div>
+                    <div>
+                        <img src="24.jpg" alt="Imagen 24">
+                    </div>
+                    <div>
+                        <img src="25.jpg" alt="Imagen 25">
+                    </div> <div>
+                        <img src="26.jpg" alt="Imagen 26">
+                    </div>
+                    <div>
+                        <img src="27.jpg" alt="Imagen 27">
+                    </div>
+                    <div>
+                        <img src="28.jpg" alt="Imagen 28">
+                    </div>
+                    <div>
+                        <img src="29.jpg" alt="Imagen 29">
+                    </div>
+                    <div>
+                        <img src="30.jpg" alt="Imagen 30">
+                    </div>
+                    <div>
+                        <img src="31.jpg" alt="Imagen 31">
+                    </div>
+                    <div>
+                        <img src="32.jpg" alt="Imagen 32">
+                    </div>
+                </div>
+                <button class="next" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+        </section>
+
+        <section id="villains">
+            <h2>Villanos Más Peligrosos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Villano</th>
+                        <th>Descripción</th>
+                        <th>Nivel de Peligro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr onmouseover="highlightRow(this)" onmouseout="removeHighlight(this)">
+                        <td>El Lich</td>
+                        <td>Un antiguo ser cósmico dedicado a la destrucción.</td>
+                        <td>10/10</td>
+                    </tr>
+                    <tr onmouseover="highlightRow(this)" onmouseout="removeHighlight(this)">
+                        <td>Rey Helado</td>
+                        <td>Un trágico mago obsesionado con capturar princesas.</td>
+                        <td>7/10</td>
+                    </tr>
+                    <tr onmouseover="highlightRow(this)" onmouseout="removeHighlight(this)">
+                        <td>Hunson Abadeer</td>
+                        <td>El gobernante del Nightosphere y padre de Marceline.</td>
+                        <td>8/10</td>
+                    </tr>
+                    <tr onmouseover="highlightRow(this)" onmouseout="removeHighlight(this)">
+                        <td>Hombre Mágico</td>
+                        <td>Un mago caótico con poderes impredecibles.</td>
+                        <td>6/10</td>
+                    </tr>
+                    <tr onmouseover="highlightRow(this)" onmouseout="removeHighlight(this)">
+                        <td>Padre de Marceline</td>
+                        <td>Un poderoso demonio con una relación compleja con su hija.</td>
+                        <td>9/10</td>
+                    </tr>
+                    <tr onmouseover="highlightRow(this)" onmouseout="removeHighlight(this)">
+                        <td>Gumbald</td>
+                        <td>El tío de la Princesa Chicle con una vendetta contra ella.</td>
+                        <td>8/10</td>
+                    </tr>
+                    <tr onmouseover="highlightRow(this)" onmouseout="removeHighlight(this)">
+                        <td>Yo del Futuro de Finn</td>
+                        <td>Una versión de Finn del futuro que se ha convertido en villano.</td>
+                        <td>7/10</td>
+                    </tr>
+                    <tr onmouseover="highlightRow(this)" onmouseout="removeHighlight(this)">
+                        <td>Rey Vampiro</td>
+                        <td>El gobernante de los vampiros, buscando dominar la Tierra de Ooo.</td>
+                        <td>8/10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="allies">
+            <h2>Aliados de Finn y Jake</h2>
+            <ul>
+                <li><strong>Princesa Chicle:</strong> La inteligente y ingeniosa gobernante del Reino de Caramelo.</li>
+                <li><strong>Marceline:</strong> La Reina Vampiro con un amor por la música y la aventura.</li>
+                <li><strong>BMO:</strong> Una consola de videojuegos viviente que es un compañero leal.</li>
+                <li><strong>Princesa Lumpy Space:</strong> Una amiga dramática pero adorable de Lumpy Space.</li>
+            </ul>
+        </section>
+
+        <section id="funfacts">
+            <h2>Datos Curiosos</h2>
+            <ul>
+                <li>El programa fue inspirado por un cortometraje creado por Pendleton Ward para Cartoon Network.</li>
+                <li>El actor de voz de Jake, John DiMaggio, también da voz a Bender en *Futurama*.</li>
+                <li>Cada episodio es aproximadamente de 11 minutos de duración, ¡perfecto para aventuras rápidas!</li>
+                <li>La serie ha ganado varios premios, incluidos los Emmy de Primetime.</li>
+            </ul>
+        </section>
+
+        <button id="scrollToTop" onclick="scrollToTop()">⬆ Volver Arriba</button>
+        <button id="scrollToTop" onclick="window.location.href='datos de Api.html.html'">Api de Hora de Aventura</button>
+
+    </main>
+
+    <footer>
+        <p>&copy; La vida es una ilusión, la muerte es la única realidad...</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        function moveCarousel(direction) {
+            const images = document.querySelectorAll('.carousel-images div');
+            images[currentIndex].style.display = 'none';
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            images[currentIndex].style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('.carousel-images div');
+            images.forEach((img, index) => {
+                img.style.display = index === 0 ? 'block' : 'none';
+            });
+        });
+
+        function highlightRow(row) {
+            row.style.backgroundColor = '#f0e68c';
+        }
+
+        function removeHighlight(row) {
+            row.style.backgroundColor = '';
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

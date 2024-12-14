@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API de Hora de Aventura</title>
+  <link rel="icon" type="image/gif" href="pibby.gif">
+  <style> header{
+
+     background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente para mejorar la legibilidad del texto */
+   }
+    body {
+      font-family: Arial, sans-serif;
+      background: url('pibby.mp4') no-repeat center center fixed;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .character img {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.8); /* Borde blanco suave */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  transition: transform 0.3s ease; /* Transición suave */
+}
+
+.character img:hover {
+  transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+   
+  
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: white;
+    }
+
+    .container {
+      padding: 1rem;
+    }
+
+    .section {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .section h2 {
+      color: #555;
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+    }
+
+    .character {
+      background: transparent;
+      margin: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 200px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .character img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .character h3 {
+      margin: 0.5rem 0;
+    }
+
+    .character p {
+      margin: 0.2rem 0;
+    }
+
+    .first-appearance {
+      font-weight: bold;
+      color: #007BFF; /* Color azul para destacar */
+    }
+
+    #loading {
+      display: none;
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+   
+
+/* Contenedor del GIF con fondo negro */
+.gif-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('finn0.gif') no-repeat center center;
+    background-color: lightskyblue; /* Establece el fondo negro */
+    background-size: cover; /* Asegura que el GIF cubra toda la pantalla sin perder proporciones */
+    z-index: -1; /* Envía el GIF al fondo, detrás del contenido */
+    will-change: transform; /* Optimización para mejorar el rendimiento */
+}
+
+/* Estilo del contenido que se muestra encima del GIF */
+.contenido {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+   
+    border-radius: 10px;
+
+  }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hora de Aventura - API Simulada</h1>
+  </header>
+  <!-- El GIF de fondo -->
+    <div class="gif-background"></div>
+
+     <div class="contenido">
+       
+  
+     </div>
+   </div>
+            <div class="container">
+             <button onclick="loadCharacters()">Cargar Personajes</button>
+              <p id="loading">Cargando personajes...</p>
+            <div id="character-list"></div>
+  <script>
+    // Simulación de una base de datos de personajes divididos por categorías
+    const characters = {
+      heroes: [
+        { name: "Finn el Humano", description: "El valiente héroe de Ooo que siempre busca ayudar a los demás.", image: "finn1.jpeg", firstAppearance: "Temporada 1, Episodio 1: Slumber Party Panic" },
+        { name: "Jake el Perro", description: "El mejor amigo de Finn con poderes mágicos de elasticidad.", image: "jake el perro.jpg", firstAppearance: " Temporada 1, Episodio 1: Slumber Party Panic" },
+        { name: "Princesa Chicle", description: "La gobernante científica del Reino de Dulces.", image: "princesa chicle.jpeg", firstAppearance: " Temporada 1, Episodio 1: Slumber Party Panic" },
+        { name: "Marceline la Reina Vampiro", description: "Una vampira amante de la música y amiga de Finn y Jake.", image: "marceline.jpg", firstAppearance: "Temporada 1, Episodio 12: Evicted!" },
+        { name: "Rey Flama", description: "El temperamental gobernante del Reino de Fuego.", image: "rey flama.jpg", firstAppearance: "Temporada 4, Episodio 15: Sons of Mars" },
+        { name: "Princesa Flama", description: "La princesa del Reino de F uego con una personalidad ardiente.", image: "Princesa Flama .jpg", firstAppearance: " Temporada 3, Episodio 26: Incendium" },
+        { name: "Billy", description: "El legendario héroe de Ooo y mentor de Finn.", image: "billy.jpg", firstAppearance: "Temporada 1, Episodio 25: His Hero" },
+        { name: "Cazadora", description: "Una feroz protectora de los bosques mágicos.", image: "cazadora.jpg", firstAppearance: "Temporada 7, Episodio 32: Flute Spell" }
+      ],
+      villains: [
+        { name: "Rey Helado", description: "Un villano excéntrico con un corazón roto que busca amor.", image: "rey heladi.jpeg", firstAppearance: "Temporada 1, Episodio 1: Slumber Party Panic" },
+        { name: "Lich", description: "Una entidad malvada y destructiva que busca el fin de toda vida.", image: "lich.jpeg", firstAppearance: "Temporada 2, Episodio 25: Mortal Folly" },
+        { name: "Ricardio el Corazón", description: "Un villano en forma de corazón que busca venganza.", image: "corazon.jpeg", firstAppearance: "Temporada 1, Episodio 7: Ricardio the Heart Guy" },
+        { name: "Magic Man", description: "Un mago caótico que disfruta atormentar a los demás.", image: "magic man.jpeg", firstAppearance: "Temporada 1, Episodio 20: Freak City" },
+        { name: "Don Polvorón", description: "Un villano cómico que busca dominar el Reino de Dulces.", image: "don.jpeg", firstAppearance: "Temporada 3, Episodio 5: Too Young" },
+        { name: "Me-Mow", description: "Una pequeña pero peligrosa asesina felina.", image: "memow.jpeg", firstAppearance: " Temporada 3, Episodio 16: Jake vs. Me-Mow" },
+        { name: "Marceline Malvada", description: "Una versión maléfica de Marceline de un universo alternativo.", image: "marceline mala.jpeg", firstAppearance: "Temporada 5, Episodio 30: Farmworld Finn (Crossover)" }
+      ],
+      Aliados: [
+        { name: "BMO", description: "Una consola de videojuegos viviente que acompaña a Finn y Jake.", image: "bmo.jpeg", firstAppearance: " Temporada 1, Episodio 1: Slumber Party Panic" },
+
+        { name: "Lady Arcoiris", description: "La novia de Jake que puede volar y hablar coreano.", image: "arcoiris.jpeg", firstAppearance: "Temporada 1, Episodio 2: My Two Favorite People" },
+
+        { name: "Cañón Tortuga", description: "Un amigo leal del Reino de Dulces que ayuda en batallas.", image: "tortuga.png", firstAppearance: " Temporada 6, Episodio 34: Walnuts & Rain" },
+
+        { name: "Gunter", description: "El pingüino mascota del Rey Helado que guarda un gran secreto.", image: "GUNTER.jpeg", firstAppearance: "Temporada 1, Episodio 11: What Is Life?" },
+
+        { name: "Neddy", description: "El tímido hermano de la Princesa Chicle.", image: "neddy.jpg", firstAppearance: "Temporada 7, Episodio 1: Bonnie & Neddy" },
+
+        { name: "Shelby", description: "Un gusano que vive en el árbol de Finn y Jake.", image: "gusano.jpeg", firstAppearance: "Temporada 2, Episodio 24: The Limit" },
+
+        { name: "Tree Trunks", description: "Una dulce elefante que adora hacer pasteles.", image: "Tree Trunks and Apple Pie.jpeg", firstAppearance: " Temporada 1, Episodio 4: Tree Trunks" },
+
+        { name: "Manfried", description: "Un pequeño hombre pan que vive en el Reino de Dulces.", image: "mentita.webp", firstAppearance: "Temporada 1, Episodio 6: The Duke" }
+      ]
+    };
+
+    function loadCharacters() {
+      const loadingText = document.getElementById('loading');
+      const characterList = document.getElementById('character-list');
+
+      loadingText.style.display = 'block'; // Muestra el mensaje de carga
+      characterList.innerHTML = ''; // Limpia cualquier contenido previo
+
+      // Recorre las categorías y crea las secciones dinámicamente
+      for (const category in characters) {
+        const section = document.createElement('div');
+        section.classList.add('section');
+
+        // Añade el título de la categoría
+        const title = document.createElement('h2');
+        title.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+        section.appendChild(title);
+
+        // Recorre los personajes dentro de la categoría
+        characters[category].forEach(character => {
+          const characterDiv = document.createElement('div');
+          characterDiv.classList.add('character');
+
+          // Imagen del personaje
+          const img = document.createElement('img');
+          img.src = character.image;
+          img.alt = character.name;
+          characterDiv.appendChild(img);
+
+          // Nombre del personaje
+          const name = document.createElement('h3');
+          name.textContent = character.name;
+          characterDiv.appendChild(name);
+
+          // Descripción del personaje
+          const description = document.createElement('p');
+          description.textContent = character.description;
+          characterDiv.appendChild(description);
+
+          // Primer capítulo de aparición
+          const firstAppearance = document.createElement('p');
+          firstAppearance.classList.add('first-appearance');
+          firstAppearance.textContent = `Primera aparición: ${character.firstAppearance}`;
+          characterDiv.appendChild(firstAppearance);
+
+          section.appendChild(characterDiv);
+        });
+
+        // Añade la sección completa al listado de personajes
+        characterList.appendChild(section);
+      }
+
+      loadingText.style.display = 'none'; // Oculta el mensaje de carga
+    }
+  </script>
+</body>
+</html>
